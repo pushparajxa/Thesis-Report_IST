@@ -1,0 +1,155 @@
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -*- coding: utf-8; mode: latex -*- %%
+  %
+%%%%%    ESTE FICHEIRO ESTÁ FORMATADO PARA LaTeX2e, NÃO PODENDO, POR ISSO,
+ %%%                SER PROCESSADO UTILIZANDO LaTeX 2.09.
+  %
+
+% $Id: tese.tex,v 1.1 2007/11/23 09:53:19 david Exp $
+% $Log: tese.tex,v $
+% Revision 1.1  2007/11/23 09:53:19  david
+% *** empty log message ***
+%
+%
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%
+ %%%
+  %hello
+
+\NeedsTeXFormat{LaTeX2e}
+
+\documentclass[a4paper,11pt,twoside,onecolumn,final,openright]{book}
+\usepackage[doublespace,final]{thesis}
+
+
+%\usepackage[singlespace,final]{thesis}
+%\usepackage[singlespace,draft]{thesis}
+
+%\textheight=18.5cm
+%\textwidth=11.5cm
+
+\usepackage{subfigure}
+
+% japanese
+%\usepackage[encapsulated]{CJK}
+%\usepackage[overlap, CJK]{ruby}
+%Start of newly added packages
+%\usepackage[standard]{ntheorem}
+%\usepackage[algo2e]{algorithm2e}
+%\theoremstyle{break}
+%\theorembodyfont{\normalfont}
+%\newtheorem{algorithm}[algocf]{Algorithm}
+%\usepackage{pgfplots}
+\usepackage{algpseudocode} 
+\usepackage{algorithm}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{fancyvrb}
+
+%\pgfplotsset{compat=1.11}
+%End of newly added
+\usepackage[doublespace,final]{thesis}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%              M A T E R I A L     I N T R O D U T Ó R I O
+ %%%
+  %
+
+\begin{document}
+%\initfloatingfigs
+
+\input{0000-preliminar}       % Páginas iniciais exigidas no formato da tese.
+
+\pagenumbering{arabic}
+\pagestyle{headings}
+
+  
+
+
+
+\input{Introduction}
+%\input{hadoop}                    % first chapter of the first part
+%\input{1120-facere-possimus}                % facere possimus
+%\input{HOP}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                P A R T   I I  -- Consectetur Adipisicing
+ %%%
+  %
+
+
+
+\input{Background_and_Related_Work}
+
+%\input{2200-irure-dolor}                    % irure dolor
+%\input{RO_Nested_Snapshot_problem_Definition}
+%\input{2300-omnis-iste-natus}               % omnis iste natus
+%\input{RO_RootLevel_Single_Snapshot_problem_Definition}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%               P A R T   I I I  --  Cumque Nihil Impedit
+ %%%
+  %
+
+\input{solution}
+
+
+
+\input{evaluation}
+%\input{RO_Nested_Snapshots_Impl_and_eval}                 
+%\input{RO_RootLevel_Single_Snapshot_Impl_and_eval}
+
+\input{conclusion}                 
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                        SPECIAL
+ %%%
+  %
+%\bibliographystyle{authordate3}             % Bibliography
+%\bibliographystyle{apacitex}
+\bibliographystyle{chicago}
+\bibliography{document}
+%---------------------------------------------------------------------------
+%\begin{singlespace}
+%\printindex[autx]\cleardoublepage            % Author index (apacitex)
+%\end{singlespace}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                         APPENDIX
+ %%%
+  %
+
+%\part{Appendices}
+%\appendix
+
+%\input{9100-commodo-consequat}         % commodo consequat
+
+%\begin{singlespace}
+%\printnomenclature\cleardoublepage               % Glossary
+%\end{singlespace}
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                         SPECIAL
+ %%%
+  %
+\begin{singlespace}
+
+\def\indexname{Index}             % Index
+\printindex\cleardoublepage
+
+\end{singlespace}
+
+\end{document}
+
+  %
+ %%%
+%%%%%                          THE END
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

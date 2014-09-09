@@ -1,0 +1,17 @@
+# Summary of energy production 2011
+#
+#   Giving the min, max, 1st and 3rd quartils of energy 
+#   production during one hour. All figures in MWh except 
+#   price that is in SEK.
+#
+# 1	2	3	4	5	6	7	8
+type	nr	1st	min	max	3rd	mean	median
+wind	1	350.8	15.0	2287	992	707	595
+hydro	2	5808	2546	12839	9679	7695	7704
+nucl	3	5284	3713	9162	7912	6638	6787
+comb	4	400	146	2751	1789	1117	1025
+# res	5	6.4	0.3	275.4	11.2	16.84	9.80
+# other	6	0.99	0.19	38.85	1.66	1.55	1.32
+# sun	7	0.0	0.0	0.31	0.040	0.035	0.01
+# imp	8	-1696.2	-5086	3180	75	-825.8	-786.0
+# price	9	349.6	0.0	913.2	529.9	431.4	436.4

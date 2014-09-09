@@ -1,0 +1,9 @@
+﻿First, we use the hierarchy of the file system to define a partial ordering over
+inodes. Transactions follow this partial ordering when taking locks, ensuring
+that the circular wait condition for deadlock never holds. Similarly, the partial
+ordering ensures that if a transaction takes an exclusive lock on a directory inode,
+subsequent transactions will be prevented from accessing the directory's subtree
+until the lock on the directory's lock is released. Implicit locks are required for
+operations such as creating files, where concurrent metadata operations could
+return success even though only one of actually succeeded. For operations such
+as deleting a directory, explicit locks on all child nodes are required.

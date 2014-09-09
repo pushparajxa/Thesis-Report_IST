@@ -1,0 +1,93 @@
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -*- coding: utf-8; mode: latex -*- %%
+  %
+%%%%%                         CHAPTER
+ %%%
+  %
+
+% $Id: 1020-lorem-ipsum.tex,v 1.2 2009/06/19 15:51:46 david Exp $
+% $Log: 1020-lorem-ipsum.tex,v $
+% Revision 1.2  2009/06/19 15:51:46  david
+% *** empty log message ***
+%
+% Revision 1.1  2007/11/23 09:52:39  david
+% *** empty log message ***
+%
+%
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                           HEAD MATTER
+ %%%
+  %
+
+\chapter{Introduction}
+%\addcontentsline{lof}{chapter}{\thechapter\quad Lorem Ipsum}
+%\addcontentsline{lot}{chapter}{\thechapter\quad Lorem Ipsum}
+\label{ch:Introduction}
+
+\section{Overview}
+The need to maintain and analyse a rapidly growing amount of data, which is often referred to as big data, is increasing vastly. Nowadays, not only the big internet companies such as Google, Facebook and Yahoo! are applying methods to analyse such data , but more and more enterprises at all. This trend was already underlined by a study from The Data Warehousing Institute (TDWI)  conducted across multiple sectors in 2011. The study \cite{TWDI-Report} revealed that 34\% of the surveyed companies were applying methods of big data analytics, whereas 70\% thought of big data as an opportunity. \\\\
+  A common approach to handle massive data sets is executing a distributed file system such as the Google File System (GFS)  or the Hadoop Distributed File System (HDFS)  on data centres with hundreds to thousands of nodes storing petabytes of data. Popular examples of such data centres are the ones from Google, Facebook and Yahoo! with respectively 1000 to 7000 , 3000  and 3500 nodes  providing storage capacities from 9.8 (Yahoo! ) to hundreds of petabytes (Facebook).\\\\
+Many a times users using those big data sets would like to run experiments or analysis which may overwrite or delete the existing data.One option is to save the data before running analytics, since the data size is very large it is not a feasible option. The underlying file system has to support features to snapshot the data which enables users to run experiments and roll back to previous state of data, if something does not work.\\\\
+\section{Problem Definition}
+During software upgrades the possibility of corrupting the filesystem due to software bugs or human mistakes increases. This invites a solution to  minimize potential damage to the data stored in the system during upgrades.We need to take a snapshot at root of the file system before proceeding with the upgrade.If upgrade didn't work then administrator can roll back the system to the snapshot.The snapshot can be taken at any time and can be rolled-back to at any time. Following scenarios also demand the need of utility to take snapshots on file system.
+\begin{enumerate}
+\item \textbf{Protection against user errors:} Admin sets up a process to take RO(Read-Only) snapshots periodically in a
+rolling manner so that there are always x number of RO snapshots on HDFS. If a user
+accidentally deletes a file, the file can be restored from the latest RO snapshot.
+\item \textbf{Backup:} Admin wants to do a backup of a dataset. Depending on the requirements, admin takes
+a read-only (henceforth referred to as RO) snapshot in HDFS. This RO snapshot is then read and
+data is sent across to the remote backup location.
+\item \textbf{Experimental/Test setups:} A user wants to test an application against the main dataset. Normally, without doing a full copy of the dataset, this is a very risky proposition since the test setups can corrupt/overwrite production data. Admin creates a read-write (henceforth referred to as RW) snapshot of the production dataset and assigns the RW snapshot to the user to be used for experiment. Changes done to the RW snapshot will not be reflected on the production dataset.
+\item \textbf{Model Training}
+Machine-learning frameworks such as Mahout can use snapshots to enable a reproducible and audit-able model training process. Snapshots allow the training process to work against a preserved image of the training data from a precise moment in time. 
+\item \textbf{Managing Real-time Data Analysis}
+By using snapshots, query engines like Apache Drill can produce precise synchronic summaries of data sources subject to constant updates such as sensor data or social media streams. Using a snapshot for such analyses allows very precise comparisons to be done across multiple ever-changing data sources without having to stop real-time data ingestion.
+
+\end{enumerate}
+\section{Goals}
+Following goals are desired from the solution
+\begin{enumerate}
+\item Able to take multiple snapshots and nested snapshots on directories and files
+\item Able to support quick rollback in case of software upgradation failure.
+\item Time to take snapshot should be constant, should not dependant on the size of the fileSystem.
+\end{enumerate}
+
+\section{Contributions}
+The contributions of thesis work are 
+\begin{enumerate}
+\item Design and algorithms for implementing Read-Only Nested Snapshots in HDFS of HOP. The design enables the users to take snapshot in constant amount of time since all operations on snapshotted directories are logged in an efficient manner to retrieve the meta-data of the filesystem to the state before snapshot.
+\item Design and implementation of Single Snapshot which facilitates roll-back in case of software upgradataion failures.The rollback algorithm is implemented and evaluated against MySql server and clusterJ to find the efficient mechanism to perform it.
+
+\end{enumerate}
+
+\section{Structure of the thesis}
+The remaining of this thesis is organized in a number chapters. In Chapter 2, following, we
+study and analyze the relevant related work in the literature on the thesis’ topics. In Chap-
+ter 3, we describe the main insights of our proposed solution, highlighting relevant aspects
+regarding architecture, algorithms. In Chapter 5, we evaluate the performance of our solution. Chapter 6 closes this document with some conclusions and future work. 
+
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                      SECOND SECTION
+ %%%
+  %
+
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                          LAST SECTION
+ %%%
+  %
+ %%%
+%%%%%                        THE END
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "tese"
+%%% End: 

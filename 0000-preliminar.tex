@@ -1,0 +1,297 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -*- coding: utf-8; mode: latex -*- %%
+%
+%    NOTA IMPORTANTE: este ficheiro destina-se a ser formatado para
+%    visualização interactiva, utilizando um programa do tipo ``netscape''
+%    e foi concebido tendo em vista a seu processamento para obtenção de
+%    uma especificação HTML.
+%
+%    ESTE ERA O COMENTÁRIO ANTES DE REUTILIZAÇÃO DO FORMATO EM LaTeX2e...
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% $Id: 0000-preliminar.tex,v 1.2 2009/06/14 20:11:06 david Exp $
+% $Log: 0000-preliminar.tex,v $
+% Revision 1.2  2009/06/14 20:11:06  david
+% PDF version. Color index.
+%
+% Revision 1.1  2007/11/23 09:52:39  david
+% *** empty log message ***
+%
+%
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                  TÍTULO E DATA OFICIAL DA TESE
+ %%%
+  %
+
+\def\date{September 2014}
+\def\titulo{Snapshotting in Hadoop Distributed File System for Hadoop Open Platform as Service}
+
+% hypernavigation in PDF docs
+\hypersetup{colorlinks,
+   debug=false,
+   linkcolor=blue,  %%% cor do tableofcontents, \ref, \footnote, etc
+   citecolor=red,  %%% cor do \cite
+   urlcolor=blue,   %%% cor do \url e \href
+   bookmarksopen=true,
+   pdftitle={\titulo},
+   pdfauthor={Author's Name},
+   pdfsubject={Labore et Dolore},
+   pdfkeywords={Labore, Dolore}
+}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                          CAPA DA TESE
+ %%%
+  %
+
+\thispagestyle{empty}
+
+\begin{singlespace}
+\vbox to\textheight{%
+%--------------------------------------------------
+\vskip-1.3in%---------- LOGO E NOME IST/UTL -------
+%--------------------------------------------------
+\hskip-17mm\vbox to50mm{
+\vfil
+\begin{tabular}{l}
+\includegraphics[width=9cm]{figs/preliminar/Logo_IST_web.pdf}
+\end{tabular}
+\vfil
+\vfil
+}%
+%--------------------------------------------------
+\vskip18mm%---------- FIGURAS DA CAPA -------------
+%--------------------------------------------------
+\vbox to25mm{\LARGE\sl
+\vfil
+%\centerline{\psfig{file=figs/preliminar/tarantula.eps,height=25mm}}
+\vfil
+}%
+%--------------------------------------------------
+\vskip6mm%---------- TÍTULO -----------------------
+%--------------------------------------------------
+\vbox to25mm{\LARGE\bf
+\vfil
+\begin{center}
+\titulo
+\end{center}
+\vfil
+}%
+%--------------------------------------------------
+\vskip10mm%---------- NOME E GRAU ACTUAL -----------
+%--------------------------------------------------
+\vbox to25mm{\large
+\vfil
+\begin{center}
+{\Large\bf Pushparaj Motamari}\\   % author's name
+\end{center}
+\vfil
+}%
+%--------------------------------------------------
+\vskip8mm%---------- GRAU A OBTER -----------------
+%--------------------------------------------------
+\vbox to8mm{\large
+\vfil
+\centerline{
+Dissertation for the degree of Master of}
+%\vskip6mm
+\centerline{Science in Distributed Computing}
+\vfil
+}%
+%--------------------------------------------------
+\vskip10mm%---------- ORIENTADOR -------------------
+%--------------------------------------------------
+%\vbox to8mm{\large
+%\vfil
+%\begin{center}
+%\begin{tabular}{p{0.2\textwidth}l}
+%\end{tabular}
+%\end{center}
+%\vfil
+%}%
+%%--------------------------------------------------
+%\vfil
+% %--------------------------------------------------
+% \vskip5mm%---------- JÚRI -------------------------
+% %--------------------------------------------------
+\vbox to7mm{\Large\bf
+\vfil
+\begin{center}
+{\Large\bf Jury}\\
+\end{center}
+\vfil
+}%
+
+\vbox to28mm{\large
+\vfil
+\begin{center}
+\begin{tabular}{p{0.2\textwidth}l}
+Chairman: & Doctor Luis Rodrigues\\
+Supervisor: & Doctor Luis Veiga\\
+Member: & Doctor João Manuel dos Santos Lourenço\\
+        
+\end{tabular}
+\end{center}
+\vfil
+}%
+%--------------------------------------------------
+\vskip28mm%---------- DATA -------------------------
+%--------------------------------------------------
+\vbox to4mm{\Large\bf
+\vfil
+\begin{center}
+\date
+\end{center}
+\vfil
+}%
+%--------------------------------------------------
+}%vbox
+\end{singlespace}
+\newpage
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                             AGRADECIMENTOS
+ %%%
+  %
+
+\chapter*{Acknowledgements}
+%\chapter*{Acknowledgements}
+\thispagestyle{empty}
+
+% AGRADECER!
+
+I would like to express my deepest gratitude to my supervisors Dr. Luis Veiga and Dr. Jim Dowling, who were a great source of inspiration and motivation. Also, I
+would like to thank my advisers Mahmoud Ismail and Salman Niazi for countless
+hours of support.\\
+\hspace{4 em}I would like to thank  Instituto Superior Technico for providing me opportunity to learn and excel in distributed computing.Finally, I would like to thank Swedish Institute of Computer Science(SICS) for providing me with a nice working environment, all necessary compute
+resources, and great colleagues who always willing to exchange ideas.
+
+
+\vfill
+\begin{flushright}
+  \begin{minipage}{8cm}
+    \begin{center}
+      Lisboa, \today
+
+      Pushparaj Motamari
+    \end{center}
+  \end{minipage}
+\end{flushright}
+
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                            DEDICATÓRIAS
+ %%%
+  %
+
+
+% DEDICAR!
+
+
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                                RESUMO
+ %%%
+  %
+
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                            ABSTRACT
+ %%%
+  %
+
+\chapter*{Abstract}
+\thispagestyle{empty}
+The amount of data stored in modern data centres is growing rapidly nowadays.
+Large-scale distributed file systems, that maintain the massive data sets in data
+centres, are designed to work with commodity hardware. Due to the quality and
+quantity of the hardware components in such systems, failures are considered
+normal events and, as such, distributed file systems are designed to be highly
+fault-tolerant. \\\\
+\hspace{4em}     A concrete implementation of such a file system is the Hadoop Distributed File
+System (HDFS).Snapshot means capturing the state of the storage system at an exact point in time and is used to provide full recovery of data when lost.Operational as well as analytical applications manipulate the data in the distributed file system on behalf of the user or the administrator. Application-level errors or even inadvertent user errors can mistakenly delete data or modify data in an unexpected way. In this case, snapshots can be used to recover to a known, well-defined state.Snapshots can be used in Model Training, Managing Real-time Data Analysis and also to produce backups on the fly(Hot Backups).We designed nested snapshots which enables multiple snapshots on any directory. We designed and implemented root level single snapshot by which roll-back during software up-gradation can be made.We evaluate our designs and algorithms, and we show that time to take snapshot is constant and roll-back time is proportional to the changes since snapshot.
+
+
+\newpage
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                 FICHA BIBLIOGRAFICA -- PALAVRAS CHAVE
+ %%%
+  %
+
+\chapter*{Keywords}
+\thispagestyle{empty}
+
+\section*{Keywords}
+
+{\large % EM INGLÊS
+
+\noindent Hadoop
+
+\noindent HDFS
+
+\noindent FileSystem Snapshots
+
+\noindent Hop
+
+}
+
+\vfill
+%LATEX2HTML}
+
+\cleardoublepage
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                         MUDANÇA DE NUMERAÇÃO
+ %%%
+  %
+
+\pagestyle{plain}
+\pagenumbering{roman}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                             INDICES
+ %%%
+  %
+
+% ``Table of contents'' (índice).
+
+\def\contentsname{Index}
+\tableofcontents
+\newpage
+
+% Lista de figuras.
+\listoffigures
+\newpage
+
+% Lista de tabelas.
+\listoftables
+
+
+% Does it always work? I expect so...
+\cleardoublepage
+
+  %
+ %%%
+%%%%%                          F          I          M      
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Local Variables: 
+% mode: latex
+% TeX-master: "tese"
+% End: 

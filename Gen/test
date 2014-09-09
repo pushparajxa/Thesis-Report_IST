@@ -1,0 +1,12 @@
+HDFS  is   Hadoop’s   distributed  file  system   which  has   been  designed  after  Google  File
+System.  It  was   initially   created  to  be  used  in  a  Map­Reduce  computational  framework   of
+Hadoop  by   Apache  though  later  on  it  started  to  be  used  for  other  big  data  applications   as   a
+storage  which  can  support  massive  amount  of  data  on  commodity   machines.  Hadoop  File
+System   were  intended  to  be  distributed  for  being  accessed  and  used  inside  by   distributed
+processing  machines   of  Hadoop  with  a  short  response  time  and  maximum   parallel
+streaming  factor.  On  the other hand, in order for HDFS to be used as  a storage of immutable
+data  for  applications   like  Facebook,  the  highly   availability   is   a  key   requirement  besides   the
+throughput  and  response  time.  Moreover,  as   a  file  system   to  be  compliant  to  the  common
+file  system   standard,  it  provides   posix   like  interface  in  terms   of operations, however it has  a
+weaker consistency model than posix which is being discussed later on in this section.
+

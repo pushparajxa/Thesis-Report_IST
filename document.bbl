@@ -1,0 +1,118 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Apache-Hadoop}{Apache-Hadoop}{}]{Hadoop2}
+Apache-Hadoop.
+\newblock "apche hadoop version 2".
+\newblock Accessed August 11,
+  2014.\url{http://hadoop.apache.org/docs/r2.0.6-alpha/hadoop-project-dist/had%
+oop-common/releasenotes.html}.
+
+\bibitem[\protect\citeauthoryear{A.Thusoo, J.Sarma, N.Jain, Z.Shao, P.Chakka,
+  S.Anthony, H.Liu, P.Wyckoff, \& R.Murthy}{A.Thusoo et~al.}{2009}]{22}
+A.Thusoo, J.Sarma, N.Jain, Z.Shao, P.Chakka, S.Anthony, H.Liu, P.Wyckoff, \&
+  R.Murthy (2009).
+\newblock Hive: a warehousing solution over a map reduce framework.
+\newblock In {\em Proceedings of the VLDB Endowment}, Volume~2, pp.\
+  1626--1629.
+
+\bibitem[\protect\citeauthoryear{Facebook-Hadoop}{Facebook-Hadoop}{}]{Facebook}
+Facebook-Hadoop.
+\newblock "snapshots in hadoop distributed file system".
+\newblock Accessed August 11,
+  2014.\url{http://www.cs.berkeley.edu/~sameerag/hdfs_snapshots_ucb_tr.pdf}.
+
+\bibitem[\protect\citeauthoryear{Foundation}{Foundation}{a}]{26}
+Foundation, A.~S.
+\newblock "apache hbase".
+\newblock Accessed August 2, 2014.\url{http://hbase.apache.org}.
+
+\bibitem[\protect\citeauthoryear{Foundation}{Foundation}{b}]{23}
+Foundation, A.~S.
+\newblock "apache mahout".
+\newblock Accessed August 2, 2014.\url{http://mahout.apache.org}.
+
+\bibitem[\protect\citeauthoryear{Foundation}{Foundation}{c}]{21}
+Foundation, A.~S.
+\newblock "apache pig".
+\newblock Accessed August 2, 2014.\url{http://pig.apache.org}.
+
+\bibitem[\protect\citeauthoryear{Foundation}{Foundation}{d}]{27}
+Foundation, A.~S.
+\newblock "apache zookeeper".
+\newblock Accessed August 2, 2014.\url{http://zookeeper.apache.org}.
+
+\bibitem[\protect\citeauthoryear{Gilbert \& Lynch}{Gilbert \&
+  Lynch}{2002}]{cap}
+Gilbert, S. \& N.~Lynch (2002, June).
+\newblock Brewer's conjecture and the feasibility of consistent, available,
+  partition-tolerant web services.
+\newblock {\em SIGACT News\/}~{\em 33\/}(2), 51--59.
+
+\bibitem[\protect\citeauthoryear{Hakimzadeh, Peiro~Sajjad, \&
+  Dowling}{Hakimzadeh et~al.}{2014}]{hoppaper}
+Hakimzadeh, K., H.~Peiro~Sajjad, \& J.~Dowling (2014).
+\newblock Scaling hdfs with a strongly consistent relational model for
+  metadata.
+\newblock In K.~Magoutis \& P.~Pietzuch (Eds.), {\em "Distributed Applications
+  and Interoperable Systems"}, Lecture Notes in Computer Science, pp.\  38--51.
+  Springer Berlin Heidelberg.
+
+\bibitem[\protect\citeauthoryear{HopStart}{HopStart}{}]{10}
+HopStart.
+\newblock "hadoop open paas".
+\newblock Accessed August 2, 2014.\url{http://www.hopstart.org}.
+
+\bibitem[\protect\citeauthoryear{Malik}{Malik}{2012}]{11}
+Malik, W.~R. (2012).
+\newblock "a distributed namespace for a distributed file system".
+\newblock Master's thesis, KTH.
+
+\bibitem[\protect\citeauthoryear{MySql}{MySql}{}]{mysql1}
+MySql, D.~Z.
+\newblock "mysql :: Mysql cluster api developer guide :: 1.3.3.2 ndb record
+  structure".
+\newblock Accessed August 2,
+  2014.\url{http://http://dev.mysql.com/doc/mysqlclusterexcerpt/5.1/en/mysqlcl%
+usterlimitationstrans actions.html}.
+
+\bibitem[\protect\citeauthoryear{Oracle-ClusterJ}{Oracle-ClusterJ}{}]{clusterj}
+Oracle-ClusterJ.
+\newblock "mysql clusterj overview".
+\newblock Accessed August 11,
+  2014.\url{http://dev.mysql.com/doc/ndbapi/en/mccj-using-clusterj.html}.
+
+\bibitem[\protect\citeauthoryear{Oracle-MySql}{Oracle-MySql}{}]{29}
+Oracle-MySql.
+\newblock "mysql cluster overview".
+\newblock Accessed August 2,
+  2014.\url{http://dev.mysql.com/doc/refman/5.5/en/mysql-cluster-overview.html%
+}.
+
+\bibitem[\protect\citeauthoryear{Russom}{Russom}{2011}]{TWDI-Report}
+Russom, P. (2011).
+\newblock Big data analytics.
+\newblock Technical report, TDWI Best Practices Report.
+
+\bibitem[\protect\citeauthoryear{Sajjad}{Sajjad}{2013}]{12}
+Sajjad, M. H. H. H.~P. (2013).
+\newblock "maintaining strong consistency semantics in a horizontally scalable
+  and highly available implementation of hdfs ".
+\newblock Master's thesis, KTH.
+
+\bibitem[\protect\citeauthoryear{SICS}{SICS}{}]{15}
+SICS.
+\newblock "swedish ict sics".
+\newblock Accessed August 2, 2014.\url{http://www.sics.se}.
+
+\bibitem[\protect\citeauthoryear{Snapshot-ls}{Snapshot-ls}{}]{Snapshot-ls}
+Snapshot-ls.
+\newblock "list subtree in a snapshot".
+\newblock Accessed August 2, 2014.\url
+  {https://github.com/pushparajxa/Snapshots/blob/master/Final_Short.sql}.
+
+\bibitem[\protect\citeauthoryear{White}{White}{2009}]{h17}
+White, T. (2009).
+\newblock {\em Hadoop: The Definitive Guide}.
+\newblock OReily Media.
+
+\end{thebibliography}

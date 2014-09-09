@@ -1,0 +1,66 @@
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -*- coding: utf-8; mode: latex -*- %%
+  %
+%%%%%                         CHAPTER
+ %%%
+  %
+
+% $Id: 1020-lorem-ipsum.tex,v 1.2 2009/06/19 15:51:46 david Exp $
+% $Log: 1020-lorem-ipsum.tex,v $
+% Revision 1.2  2009/06/19 15:51:46  david
+% *** empty log message ***
+%
+% Revision 1.1  2007/11/23 09:52:39  david
+% *** empty log message ***
+%
+%
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                           HEAD MATTER
+ %%%
+  %
+
+\chapter{Conclusions}
+%\addcontentsline{lof}{chapter}{\thechapter\quad Lorem Ipsum}
+%\addcontentsline{lot}{chapter}{\thechapter\quad Lorem Ipsum}
+\label{ch:conclusion}
+
+
+\section{Conclusions}
+We presented design and benchmark of algorithms for Read-Only Nested snapshots. Time to take snapshot is constant. Time to retrieve subtree in one of the snapshots at a directory is directly proportional to the number of operations executed in that directory after taking snapshot.We presented and implemented algorithms for Read-Only root level snapshot which is used in case of software upgrades.
+\section{Future Work}
+Following tasks are to be implemented and executed.
+\begin{enumerate}
+\item \textbf{Implementing Nested Snapshots:}
+Present work completely implemented Read only single snapshot and roll-back of it.More details analysis of code and algorithms presented for Read only nested snapshots has to be done to implement them.
+\item \textbf{Evaluating the two approaches of logging:}
+In section \ref{loggingApproaches} we discussed two approaches to log the operations and deleting the file that are not referred by any snapshot. Those two approaches need to evaluated by benchmarking.
+\item \textbf{Integrating Read-Only Root Level SingleSnapshot and Read-Only Netsted Snpashot solutions:}
+We presented independent solutions for Read-Only Nested Snapshots and Read-Only Root Level Snapshots.It is effective to integrate both solutions by analysing and designing new algorithms.
+\item \textbf{Roll-Backing to a particular snapshot:}
+We discussed how to retrieve subtree at a particular snpashot but didn't propose method to roll back to particular snapshot.At present we have some ideas to explore upon. We need to evaluate them by benchmarking.
+\item \textbf{Length of file being written} The solution to Read only root level snapshot need to be enhanced to support snapshotting of files that are being written while snapshotting and writing to file takes place at the same time.
+\end{enumerate}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                      SECOND SECTION
+ %%%
+  %
+
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                          LAST SECTION
+ %%%
+  %
+ %%%
+%%%%%                        THE END
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "tese"
+%%% End: 

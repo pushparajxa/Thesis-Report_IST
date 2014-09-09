@@ -1,0 +1,19 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces HDFS Architecture.\relax }}{6}{figure.caption.8}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces HOP-HDFS Table relations.\relax }}{11}{figure.caption.9}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces HOP-HDFS Schema\relax }}{12}{figure.caption.10}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces MySQL cluster\relax }}{16}{figure.caption.12}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Node groups of MySQL cluster\relax }}{17}{figure.caption.13}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Sample File System Tree\relax }}{25}{figure.caption.14}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Deletion of Snapshot\relax }}{32}{figure.caption.21}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Benchmark on Single Directory\relax }}{44}{figure.caption.22}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Benchmark on Single Directory Graph\relax }}{44}{figure.caption.23}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Time Overheads in HDFS@Facebook\relax }}{45}{figure.caption.24}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Benchmark on MySqlServer\relax }}{46}{figure.caption.25}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Benchmark-Graph on MySqlServer\relax }}{47}{figure.caption.26}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Benchmark with ClusterJ\relax }}{47}{figure.caption.27}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Benchmark-Graph with ClusterJ\relax }}{48}{figure.caption.28}
+\addvspace {10\p@ }

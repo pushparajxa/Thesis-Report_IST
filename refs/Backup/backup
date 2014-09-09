@@ -1,0 +1,29 @@
+latex -interaction=nonstopmode %.tex|bibtex %.aux|latex -interaction=nonstopmode %.tex|latex -interaction=nonstopmode %.tex|xdvi %.dvi
+
+  @Misc{website:21,
+OPTauthor = {A.S Foundation},
+OPTtitle = {Apache Pig},
+OPTmonth = {08},
+OPTyear = {2014},
+OPTurl = {http://pig.apache.org}
+}
+
+@InProceedings{22,
+author = {A.Thusoo, J.Sarma, N.Jain, Z.Shao,P.Chakka,S.Anthony,H.Liu,P.Wyckoff,R.Murthy},
+title = {Hive: a warehousing solution over a map reduce framework},
+booktitle = {Proceedings of the VLDB Endowment},
+OPTcrossref = {},
+OPTkey = {key},
+OPTpages = {1626-1629},
+OPTyear = {2009},
+OPTeditor = {},
+OPTvolume = {2},
+OPTnumber = {2},
+OPTseries = {},
+OPTaddress = {},
+OPTmonth = {},
+OPTorganization = {},
+OPTpublisher = {},
+OPTnote = {},
+OPTannote = {}
+}

@@ -1,0 +1,273 @@
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -*- coding: utf-8; mode: latex -*- %%
+  %
+%%%%%                         CHAPTER
+ %%%
+  %
+
+% $Id: 1020-lorem-ipsum.tex,v 1.2 2009/06/19 15:51:46 david Exp $
+% $Log: 1020-lorem-ipsum.tex,v $
+% Revision 1.2  2009/06/19 15:51:46  david
+% *** empty log message ***
+%
+% Revision 1.1  2007/11/23 09:52:39  david
+% *** empty log message ***
+%
+%
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                           HEAD MATTER
+ %%%
+  %
+
+\chapter{Read-Only Root Level Single Snapshot}
+%\addcontentsline{lof}{chapter}{\thechapter\quad Lorem Ipsum}
+%\addcontentsline{lot}{chapter}{\thechapter\quad Lorem Ipsum}
+\label{ch:RORLSSSolution}
+
+Following conditions are applied to the solution
+\begin{enumerate}
+\item Creation of directories with Quota, either name-space quota or disk-space quota is not allowed.
+\item Each file consists of blocks. Each blocks-size is typically 64 MB but can be set to any value.Blocks should be written completely.
+\end{enumerate}
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                        FIRST SECTION
+ %%%
+  %
+
+\section{Modifications to the Schema}
+
+Following columns need to be added to the Inodes table described in the schema \ref{fig:HDFS_table_schema} of HOP File System.
+\begin{enumerate}
+\item isDeleted \\\\
+\begin{tabular}{|c|p{15cm}|}
+\hline
+Value&Summary\\
+\hline
+0&Indicates that this Inode is not deleted.\\
+\hline
+1&Indicates that this Inode deleted after Root Level snapshot was taken.\\ 
+\hline
+\end{tabular} \\
+\item status \\\\
+\begin{tabular}{|c|p{15cm}|}
+\hline
+Value&Summary\\
+\hline
+0&Indicates that this Inode was created before taking Root Level Snapshot.\\
+\hline
+2&Indicates that this Inode created before taking Root Level snapshot but modified after that.\\ 
+\hline
+3&Indicates that this Inode was created after taking Root Level snapshot.\\ 
+\hline
+\end{tabular} \\
+
+\end{enumerate}
+\pagebreak
+
+Following Columns should be added to BlockInfos table described in the schema \ref{fig:HDFS_table_schema}.
+\begin{enumerate}
+\item status \\\\
+\begin{tabular}{|c|p{15cm}|}
+\hline
+Value&Summary\\
+\hline
+0&Indicates that this Block was created before taking Root Level Snapshot.\\
+\hline
+2&Indicates that this Block created before taking Root Level snapshot but modified after that.\\ 
+\hline
+3&Indicates that this Block was created after taking Root Level snapshot.\\ 
+\hline
+\end{tabular} \\
+\end{enumerate}
+
+\section{Rules for Modifying the fileSystem meta-data}
+Following rules apply when client issues operations described on \ref{NameNode_Ops} after root level snapshot had been taken.\\
+HOP-HDFS as well as Apache HDFS allow only appends at the end of file.Both allow overwriting of an existing file.
+\begin{enumerate}
+\item If an inode(file or directory) is created after taking root level snapshot, its status is set to 3.
+\item If an inode row is modified and its status is 0, then, a back-up of current row is saved with id = -(current id), parent\_ id=-(current parent\_ id)[To prevent sql query retrieving the back-up rows while 'ls' command issued, parent id is set to negative of original].The status of current row is changed to 2.
+\item If a block is created after taking root level snapshot,its status is set to 3.
+\item If a block is modified by appending data to it and its status is 0, then, a back-up of current row is saved with block\_ id = -(current block\_ id) and inode\_ id = -(current inode\_ id)[since two block info rows can't have same block index id when retrieved with a parent id].The status of current row is changed to 2.
+\item Deletion of a directory or file after root level snapshot was taken.
+Children of the INode to be deleted are examined in depth-first manner.All the  files which are created after snapshot was taken are permanently deleted.The directory's isDeleted flag is set to true.
+\pagebreak
+%\begin{verbatim}
+%void deleteWithSnapshotAtRootTaken(INode targetNode){
+%
+%        Stack<INode> stck = new Stack<INode>();
+%        INode tempNode;
+%        List<INode> children;
+%        INode[] inodesTemp;
+%        INode removedInode;
+%
+%        stck.add(targetNode);
+%
+%        while (!stck.empty()) {
+%            tempNode = stck.pop();
+%            tempSts = tempNode.getStatus();
+%            tempStr = tempNode.getFullPathName();
+%           
+%            if (tempNode.getIsDeleted() == 1) {
+%                //This node is already marked deleted, so nothing to do.
+%                continue;
+%            }
+%            /*
+%             * This Inode can be a directory or file also it can be new or modified or original.
+%             */
+%            if (tempNode instanceof INodeDirectory) {
+%                children = ((INodeDirectory) tempNode).getChildren();
+%                if (children != null && !children.isEmpty()) {
+%                    stck.push(tempNode);
+%                    for (INode n : children) {
+%                        stck.push(n);
+%                    }
+%                } else {
+%                    if(tempNode.getStatus()==SnapShotConstants.New){
+%                        //delete completely this directory Inode
+%                        EntityManager.remove(tempNode);
+%                    }
+%                    else{
+%                    //Set isDeleted = 1.
+%                        tempNode.setIsDeletedNoPersistance(SnapShotConstants.isDeleted);
+%                    }
+%                }
+%            } else if (tempNode instanceof INodeFile || tempNode instanceof INodeSymlink) {
+%                if (tempSts == SnapShotConstants.New) {
+%                    //We can delete this file permanently and update the ansectors about changes in the quota.
+%                    //Remove the blocks associated with this file permanently.
+%                    }
+%                } else if (tempSts == SnapShotConstants.Original || tempSts == SnapShotConstants.Modified) {
+%                    //Set isDeleted = 1.
+%                    tempNode.setIsDeletedNoPersistance(1);
+%                }
+%            } 
+%        }// End of while loop
+%     }//End of method      
+%            
+%\end{verbatim}
+
+
+\begin{verbatim}
+void deleteWithSnapshotAtRootTaken(INode targetNode){
+
+        Stack<INode> stck = new Stack<INode>();
+        //parentStck is used to track completion of processing of a directory.
+        Stack<INode> parentStck = new Stack<INode>();
+        INode tempNode;
+        List<INode> children;
+        INode[] inodesTemp;
+        INode removedInode;
+
+        stck.add(targetNode);
+        targetNode.setIsDeleted=1;   
+         
+        while (!stck.empty()) {
+            tempNode = stck.pop();
+            tempSts = tempNode.getStatus();
+            tempStr = tempNode.getFullPathName();
+           
+            
+            /*
+             * This Inode can be a directory or file also it can be new or 
+             modified or original.
+             */
+            if (tempNode instanceof INodeDirectory) {
+                if(parentStack.top().equals(tempNode)){
+                    //Processing children is completed
+                    parentStack.pop();
+                    if(tempNode.getStatus()==SnapShotConstants.New){
+                         //delete completely this directory Inode
+                        EntityManager.remove(tempNode);
+                    }                
+                
+                }
+                
+                else{
+                    parentStack.push(tempNode);            
+                    children = ((INodeDirectory) tempNode).getChildren();
+                    if (children != null && !children.isEmpty()) {
+                        stck.push(tempNode);
+                        for (INode n : children) {
+                            stck.push(n);
+                        }
+                    } 
+               }
+           } else if (tempNode instanceof INodeFile ||
+                         tempNode instanceof INodeSymlink) {
+                         
+                 if (tempSts == SnapShotConstants.New) {
+                    atomic(In Single-Transaction){
+                     //We can delete this file permanently and 
+                     //update the ancestors about changes in the quota.
+                     //Remove the blocks associated with this file
+                     // permanently.
+                     }
+                 }
+             } 
+             
+        }// End of while loop
+        
+		      
+        
+     }//End of method      
+            
+\end{verbatim}
+
+
+\item Renaming/Moving an INode(File or Directory)
+\begin{verbatim}
+void renameINode(INode src, INode dst){
+        1. Update the modification time of parent of src.
+        2. Update the modification time of parent of dst.
+        3. deletWithSnapshotAtRootTaken(dst).
+        4. Change the parent\_ id of src to dst.parent\_ id.
+}
+\end{verbatim}
+
+\end{enumerate}
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                      SECOND SECTION
+ %%%
+  %
+
+\section{Roll Back}
+ Following algorithm is used to roll back the file-system to the state at the time when Root Level Snapshot was taken.\\\\
+For INodes:
+\begin{enumerate}
+\item Delete from INodes where status=2 or status=3
+\item Update INodes set isDeleted=0 where id$>$0 and isDeleted=1
+\item Update INodes set id = -id, parent\_ id = -parent\_ id where id$<$0
+\end{enumerate}
+For Blocks:
+\begin{enumerate}
+\item Delete from Block\_ Info where status=2 or status=3
+\item Update Block\_ Info set block\_ id = -block\_ id, inode\_ id = -inode\_ id where id$<$0
+\item Delete from Block\_ Info where block\_ id$<$0
+\end{enumerate}
+\label{alg:ROSSRB}
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+%%%%%                         ANOTHER SECTION
+ %%%
+  %
+
+
+  %
+ %%%
+%%%%%                        THE END
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "tese"
+%%% End: 

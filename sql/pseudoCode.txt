@@ -1,0 +1,31 @@
+void ls_at_snapshot(int id, int stime){
+
+children={Get children whose parentId=id};
+
+children = childen - { children deleted before stime} -{ children created after stime} -{children moved_in after stime};
+
+children = children + {children moved-out after stime};
+
+modifiedChildren = { children modified after stime};
+
+for(child chd : children){
+
+if(modifiedChildren.contains(chd))
+	{
+
+	modChd = modifiedChildren.get(chd.getId());
+
+		if(chd.movedTime>modChd.modifiedTime)
+		{
+		  #This child modified first then moved.So get the row stored M-List with modChd.modifiedTime
+
+			
+			
+		}
+		else{
+			#return the chd row.
+		}
+	}
+
+
+}
