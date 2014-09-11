@@ -30,8 +30,8 @@
 \contentsline {subsection}{\numberline {3.2.5}Listing current children under a directory }{28}{subsection.3.2.5}
 \contentsline {subsection}{\numberline {3.2.6}Logging, Removing logs and Deleting inodes which are not referred by any snapshot}{29}{subsection.3.2.6}
 \contentsline {subsubsection}{\numberline {3.2.6.1}Approach 1:}{29}{subsubsection.3.2.6.1}
-\contentsline {subsubsection}{\numberline {3.2.6.2}Approach :2}{31}{subsubsection.3.2.6.2}
-\contentsline {subsection}{\numberline {3.2.7}Length of file being Written}{33}{subsection.3.2.7}
+\contentsline {subsubsection}{\numberline {3.2.6.2}Approach :2}{30}{subsubsection.3.2.6.2}
+\contentsline {subsection}{\numberline {3.2.7}Length of file being Written}{32}{subsection.3.2.7}
 \contentsline {section}{\numberline {3.3}Read-Only Root Level Single Snapshot}{34}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Modifications to the Schema}{34}{subsection.3.3.1}
 \contentsline {subsection}{\numberline {3.3.2}Rules for Modifying the fileSystem meta-data}{35}{subsection.3.3.2}

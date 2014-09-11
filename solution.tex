@@ -52,7 +52,6 @@ attributes of file or directory cannot be changed. The snapshots are truly read-
 %\addcontentsline{lot}{chapter}{\thechapter\quad Lorem Ipsum}
 
 
-This section presents solution to Netsed Snapshots problem disussed in \ref{ch:RONSProblem}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
 %%%%%                        FIRST SECTION
@@ -381,42 +380,48 @@ void ls_current(int id){
 Here two approaches two solve the issues are presented.
 \subsubsection{Approach 1:}
 \textbf{Columns to be added to Inodes Table}\\
-1. Moved\_ In/Created Time: When an Inode is created we put that time in that column. When we move an Inode from one directory to another we note that time in that.\\\\
-\textbf{MovedPaths}\\
+1. Moved\_ In/Created Time(Join Time): When an Inode is created we put that time in that column. When we move an Inode from one directory to another we note that time in that.We refer it as join time meaning the time this inode joined in its present directory.\\\\
+\textbf{InodeSnapshotMap}\\
 \begin{table}[h!]
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|c|c|c|c|}
 \hline
 Inode\_ Id&
-Path&
-Time\\
+BelongedTo\_ inode\_ id&
+BeginTime&
+EndTime\\
 \hline
 \end{tabular}\\
-\caption{MovedPaths table}
+\caption{InodeSnapshotMap table}
 \label{movedPaths}
 \end{table}
 
 
 \textbf{When to Log}\\
- When we add/ deleted/modify directories or files in a directory then we log changes under that directory. We log only when this directory is in any snapshot[which is taken on this directory or one-of its ancestors]. So before performing any operation in this directory we check whether this directory is in any snapshot or not. We take help of the table MovedPaths \ref{movedPaths}.Ex: we have /A/B/C/ as path, where A,B, and C are directories.Suppose we want to add a file in C. Now we need to check whether C is in any snapshot. On a first sight, we can think that checking whether any snapshots taken on A,B,C before C was created , but B or A may be moved from different place, for example B may be moved from /A/D/ path and there may be some snapshots taken on directory D even though no snapshots may be not taken on A and B. To handle that situation, whenever we move a file or directory, first we check whether it is in a snapshot, if yes then insert a row in the MovedPaths table containing original path before being moved. \\
- Assume following path exist /U/V/W/X [U,V,W,X are directories, we are performing add/delete/modify on inodes(files or directories) in it]. Say we are performing operation on inode P whose path is /U/V/W/X/P.First, we need to find whether P is in any snapshot. We find that with below steps.If P is in any snapshot then we log the operation in corresponding table which are described above \ref{RONSS:schema}. 
- \begin{enumerate}
- \item  Check if any snapshots on U,V,W,X before present time.
-\item  If we not find any in step1 then check in the MovedPaths table recursively for U,V,W ,X if there any snapshots on any of the inodes in the MovedPaths.
-\item If there any from step1 and step2 then check whether MovedIn/Created Time of X is less than any of them. If none is there means, there was no snapshot covering this directory after it created or moved in.
-\end{enumerate}  
+ When we add/ deleted/modify directories or files in a directory then we log changes under that directory. We log only when this directory is in any snapshot[which is taken on this directory or one-of its ancestors]. So before performing any operation in this directory we check whether this directory is in any snapshot or not.Consider directory path /A/B/C/, we want to add a file to directory C.We can log this in C-List if C is in a snapshot. \\
+ 1. First Check any snapshots taken on C.If yes then log.\\
+ 2. Get the Join-Time of each inode on the path i.e A,B,C and select the maximum time. If there are any snapshots taken on A or B after maximum time then log.\\
+ 3. If there is any entry for C in InodeSnapshotMap then log.\\
+\\
+\textbf{Moving an Inode}\\ 
+Consider directory paths /A/B/ and /U/V/W/, move directory W to B.
+\begin{enumerate}
+\item Get the list of snapshots taken on U,V after the join time of W. In the form like
+\{U,Time of First Snapshot after Join Time, Time Last Snapshot after Join Time\}.
+\item Since some inodes under W may have join times greater than W' join time, we need to check for each inode in sub-tree on which snapshots of U,V is present.After determining which snapshots it is in then insert row in InodeSnapshotMap table.In this way we capture in which snapshots a particular inode is in when it is being moved. Here if we observe, the join times of inodes on directory path from root to child are non-decreasing.This enforces an order which is useful in finding whether an inode is in any snapshots or not.
+\item Set the Join time of each children in the subtree to the present time.
+\end{enumerate}
 
 \textbf{Logging modifications of files and blocks:}\\
 When we change any columns corresponding to the file in Inode table those were handled as mentioned above. If we append new blocks to or modify existing blocks then we should check whether to log them or not. This depends on whether this file is in any snapshot or not. So we follow the similar procedure as mentioned above.
 
-\textbf{Deleting logs}\\
- We follow the same approach as mentioned in the Approach1.
+%\textbf{Deleting logs}\\
+ %We follow the same approach as mentioned in the %Approach2.
 
 \textbf{Deletion of a file/or directory}\\
-When the issuer issues command to delete a file, first , we check whether it is in any snapshot, if not then we permanently delete it. If user issued command to delete a directory, since a directory may contain files/directories which are moved into it from different directory on which snapshot was taken. we should not delete them permanently. We mark all the children with isDeleted=1 and the background delete thread will do check on inodes in it in a bottom-up fashion, deleting those not present in any snapshot permanently.
- We also delete any logs in  D-List,MovedPaths associated with the inode that we want to delete permanently.
+When the issuer issues command to delete a file, first , we check whether it is in any snapshot, if not then we permanently delete it.When deleting a directory, if it is in snapshot,we mark all the children with isDeleted=1 and the background delete thread will do check on inodes , deleting those not present in any snapshot permanently.Consider /A/B/C/ suppose want to delete C. First get the list of snapshots on A,B after the join time of C then for each child in sub-tree rooted at C set isDeleted=1, also inserting rows in inodesMap table based on the join time of child with the list of snapshots on A,B after join time of C. When you are deleting an inode permanently delete the logs associated with it in tables c-list,d-list,etc..
 
 \textbf{Deleting entries in MovedPaths Table}\\
-When a snashot on an Inode is deleted, we can check paths containing that Inode for any snapshot existing on Inodes in that path before the moved time. If there aren’t any then we can delete them.If a file/directory is deleted then we can delete all entries related to that. 
+When we delete a snapshot on an inode, we check for entries in InodeSnapshotMap with that can be deleted.
 
 \subsubsection{Approach :2}
 When snapshot is taken we place the inodes under the snapshot in below table.
@@ -427,9 +432,8 @@ Inode\_ Id&Snapshot\_ time\\
 \hline
 \end{tabular}\\\\
 if an inode with isDeleted=true and there is no entry in the above table , then we can remove that file from HDFS permanently.\\
-The tables M-List, D-List, C-list , MV-list and MV-IN-List are populated for a directory when it is in a snapshot means an entry can be found in the above table.\\
+The tables M-List, D-List, C-list , MV-list and MV-IN-List are populated for a directory when it is in a snapshot means an entry can be found in the above table.\\\\
 \textbf{Cleaning the logs when a Snapshot is Deleted}\\
-
 When a snapshot is deleted, all inodes under that snapshot can delete their logs on a criteria explained shortly. 1,2..numbers represent files in a directory P. S1,S2,S3 represent snapshots taken in increasing chronological manner. As per the query to list files at a certain snapshot, say S2 , we get all inodes from inodes table whose parent is P then remove all the files created after taking snapshot and adjust those which are moved out , modified. Then remove files deleted before taking snapshot 
 
 to get files at S2 for directory P ==$>$ \{1,2,3,4,5,6,7,8\} - \{3,4\}-\{7,8\} =\{1,2,5,6\}
@@ -458,7 +462,8 @@ Since we keep latest information about an Inode in Inodes’ table, we need to a
 We find value 2 in Inodes’ table. The replication factor= Max(Current value, Max(values in M-List for this Inode)). In this case we will find it as 9 and we expect block report mentioning replication factor of 9 for each block.Suppose S3 was deleted , then the row with value 9 is deleted and we find maximum value 6. 
 
 \textbf{Disadvantages:}\\
-1. Time for taking snapshot is O(n) where n is the number of descendants  in directory 
+1. Time for taking snapshot is O(n) where n is the number of descendants  in directory \\
+2. The space overhead on taking snapshot is o(n) where n is the number of descendants in directory.
 
 \subsection{Length of file being Written}
 This section explains the case when snapshot was taken while writing to file is in progress.In HDFS file System metadata and actual data are separated and store at different places.Various options to know the length of the file are:
