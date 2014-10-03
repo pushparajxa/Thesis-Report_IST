@@ -40,9 +40,9 @@ MapReduce ~\cite[p.~9]{h17}. Similar to MapReduce on GFS, Hadoop is exploiting d
 locality for MapReduce jobs by trying to execute map jobs on a DataNode which
 hosts the data. If not possible, the framework will attempt to execute the job
 on a node close to the location of data, for instance on the same rack. This can
-greatly improve the overall performance [28] and reduces the network bandwidth
-requirements.//
- HDFS  is   Hadoop’s   distributed  file  system   which  has   been  designed  after  Google  File System.It was initially created to be used in a Map-Reduce computational framework of Hadoop by Apache though later on it started to be used for other big data applications as a storage which can support massive amount of data on commodity machines.Hadoop File System were intended to be distributed for being accessed and used inside by distributed processing machines of Hadoop with a short response time and maximum parallel streaming factor. On the other hand, in order for HDFS to be used as a storage of immutable data for applications like Facebook, the high availability is a key requirement besides the throughput and response time.Moreover, as a file system to be compliant to the common file system standard, it provides posix like interface in terms of operations, however it has a weaker consistency model than posix which is being discussed later on in this section.
+greatly improve the overall performance  and reduces the network bandwidth
+requirements.\\
+ HDFS  is   Hadoop’s   distributed  file  system   which  has   been  designed  after  Google  File System.It was initially created to be used in a Map-Reduce computational framework of Hadoop by Apache though later on it started to be used for other big data applications as a storage which can support massive amount of data on commodity machines. Hadoop File System were intended to be distributed for being accessed and used inside by distributed processing machines of Hadoop with a short response time and maximum parallel streaming factor. On the other hand, in order for HDFS to be used as a storage of immutable data for applications like Facebook, the high availability is a key requirement besides the throughput and response time. Moreover, as a file system to be compliant to the common file system standard, it provides posix like interface in terms of operations, however it has a weaker consistency model than posix which is being discussed later on in this section.
  \subsection{HDFS Architecture}
 HDFS  splits   up  each  file  into  smaller  blocks  and replicates  each block  on a different random
 machine.  Machines   storing  replicas   of  the  blocks   called  DataNode. On the other hand since
@@ -286,7 +286,7 @@ scenario.
 \end{table}
 
 \subsection{HOP-HDFS Implementation}
-n HOP-HDFS each HDFS opeartion is implemented as a single transaction,where after transaction began, read and write the necessary meta-data from NDB , and then either commit the transaction, or in case of failure, the transaction was aborted and then possibly retried. However,  the  default  isolation  level  of  NDB  is   read  committed,  which  allows   the  results   of
+In HOP-HDFS each HDFS opeartion is implemented as a single transaction,where after transaction began, read and write the necessary meta-data from NDB , and then either commit the transaction, or in case of failure, the transaction was aborted and then possibly retried. However,  the  default  isolation  level  of  NDB  is   read  committed,  which  allows   the  results   of
 write  operations   in  transactions   to  be  exposed  to  read  operations   in  different  concurrent
 transactions.  This   means   that  a  relatively   long  running  read  transaction  could  read  two
 different  versions   of  data  within  the  same  transaction,  known  as  a fuzzy  read, or it could get
@@ -406,7 +406,7 @@ which separates the data from business logic.
 
 \section{Related Work}
 \subsection{Snapshots in Apache Hadoop Version2}
-Apache Hadoop implemented snapshots in their latest version \cite{Hadoop2} , which supports nested snapshots and constant time for the creation of snapshots. Since metadata and data are separated it supports string consistency for metadata snapshot but not for data.In case of file being written, unless the datanode notifies the namenode or client notifies namenode of latest length of last block via hsync, namenode is unaware of current length of the file when snapshot was being taken.The solution also couldn't address the case of replication change of half-filled last block after taking snapshot, where it is appended after taking snapshot.\\
+Apache Hadoop implemented snapshots in their latest version \cite{Hadoop2} , which supports nested snapshots and constant time for the creation of snapshots. Since metadata and data are separated it supports strong consistency for metadata snapshot but not for data.In case of file being written, unless the datanode notifies the namenode or client notifies namenode of latest length of last block via hsync, namenode is unaware of current length of the file when snapshot was being taken.The solution also couldn't address the case of replication change of half-filled last block after taking snapshot, where it is appended after taking snapshot.\\
 Apache Hadoop distribution provides single snapshot mechanism to protected file system meta-data and storage-data from software upgrades. The snapshot mechanism lets administrators persistently save the current state of the filesystem, so that if the upgrade results in data loss or corruption it is possible to rollback the upgrade and return HDFS to the namespace and storage state as they were at the time of the snapshot.
 
 The snapshot (only one can exist) is created at the cluster administrator's option whenever the system is started. If a snapshot is requested, the NameNode first reads the checkpoint and journal files and merges them in memory. Then it writes the new checkpoint and the empty journal to a new location, so that the old checkpoint and journal remain unchanged.

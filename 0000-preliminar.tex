@@ -157,17 +157,24 @@ Vogal: & Prof. João Manuel dos Santos Lourenço\\
 %%%%%                             AGRADECIMENTOS
  %%%
   %
+\chapter*{European Master in Distributed Computing (EMDC)  }
+
+This thesis is a part of the curricula of the European Master in Distributed Computing, a cooperation between KTH Royal Institute of Technology in Sweden,Instituto Superior Tecnico (IST)  in Portugal and Universitat Politecnica de Catalunya (UPC)  in Spain. This double degree master program is supported by Education,Audiovisual and Culture Executive Agency (EACEA)  of the European Union.\\\\
+My Study track during the master studies of the two years is as follows:\\\\
+First Year: Instituto Superiot Tecnico,Universidade de Lisboa\\
+Third Semester:KTH Royal Institute of Technology\\
+Fourth Semester: SICS (Swedish Institute of Computer Science)  and Instituto Superior Tecnico, Universidade de Lisboa
+
 
 \chapter*{Acknowledgements}
 %\chapter*{Acknowledgements}
 \thispagestyle{empty}
 
 % AGRADECER!
-
 I would like to express my deepest gratitude to my supervisors Dr. Luis Veiga and Dr. Jim Dowling, who were a great source of inspiration and motivation. Also, I
 would like to thank my advisers Mahmoud Ismail and Salman Niazi for countless
 hours of support.\\
-\hspace{4 em}I would like to thank  Instituto Superior Technico for providing me opportunity to learn and excel in distributed computing.Finally, I would like to thank Swedish Institute of Computer Science(SICS) for providing me with a nice working environment, all necessary compute
+\hspace{4 em}I would like to thank  Instituto Superior Technico for providing me opportunity to learn and excel in distributed computing.Finally, I would like to thank Swedish Institute of Computer Science (SICS)  for providing me with a nice working environment, all necessary compute
 resources, and great colleagues who always willing to exchange ideas.
 
 
@@ -219,7 +226,16 @@ quantity of the hardware components in such systems, failures are considered
 normal events and, as such, distributed file systems are designed to be highly
 fault-tolerant. \\\\
 \hspace{4em}     A concrete implementation of such a file system is the Hadoop Distributed File
-System (HDFS).Snapshot means capturing the state of the storage system at an exact point in time and is used to provide full recovery of data when lost.Operational as well as analytical applications manipulate the data in the distributed file system on behalf of the user or the administrator. Application-level errors or even inadvertent user errors can mistakenly delete data or modify data in an unexpected way. In this case, snapshots can be used to recover to a known, well-defined state.Snapshots can be used in Model Training, Managing Real-time Data Analysis and also to produce backups on the fly(Hot Backups).We designed nested snapshots which enables multiple snapshots on any directory. We designed and implemented root level single snapshot by which roll-back during software up-gradation can be made.We evaluate our designs and algorithms, and we show that time to take snapshot is constant and roll-back time is proportional to the changes since snapshot.
+System  (HDFS) . Snapshot means capturing the state of the storage system at an exact point in time and is used to provide full recovery of data when lost. Operational as well as analytical applications manipulate the data in the distributed file system on behalf of the user or the administrator. Application-level errors or even inadvertent user errors can mistakenly delete data or modify data in an unexpected way. In this case, snapshots can be used to recover to a known, well-defined state. Snapshots can be used in Model Training, Managing Real-time Data Analysis and also to produce backups on the fly (Hot Backups) . We designed and implemented nested snapshots which enables multiple snapshots on any directory. We designed and implemented root level single snapshot by which roll-back during software upgrade can be made. We evaluate our designs and algorithms, and we show that time to take snapshot is constant and roll-back time is proportional to the changes since the snapshot was taken.
+
+\chapter*{Resumo}
+\thispagestyle{empty}
+A quantidade de dados armazenados em centros de dados modernos cresce rapidamente hoje em dia. Sistemas distribuídos de larga escala, que mantêm grandes conjuntos de dados em centros de dados, são projetados para  trabalhar com hardware comum. Devido à qualidade e quantidade dos componentes de hardware nesses sistemas, as faltas são consideradas eventos normais e, como tal, os sistemas distribuídos de ficheiros são projetados para ser altamente tolerante a faltas.
+
+Uma realização concreta de um tal sistema é o Hadoop Distributed File System  (HDFS) . Um snapshot consiste em capturar o estado do sistema de armazenamento num ponto exacto no tempo e pode ser utilizado para permitir a recuperação total dos dados quando ocorre uma falha. As aplicações manipulam os dados no sistema de ficheiros distribuído em nome de utilizadores ou administradores. Erros ao nível aplicacional ou até memso dos utilizadores podem remover informação por engano ou modificar dados de uma forma inesperada. Neste caso, os snapshots podem ser utilizados posteriormente para recuperar o sistema com o estado de um ponto anterior. Estes podem ser usados no treino de modelos, em anaálise de dados em tempo real, e também para backups rápidos  (Hot Backups) .
+
+Desenhámos e realizámos um mecanismso de snaphsots aninhados que permite vários snapshots em qualquer pasta. O snapshot de nível raiz permite o roll-back durante a actualização de software. Avaliámos os nossos mecanismos e algoritmos, demonstrando tempo para tirar um snapshot é constante e o tempo de roll-back é proporcional à quantidade de modifcações desde o snapshot.
+
 
 
 \newpage
@@ -230,8 +246,7 @@ System (HDFS).Snapshot means capturing the state of the storage system at an exa
  %%%
   %
 
-\chapter*{Keywords}
-\thispagestyle{empty}
+
 
 \section*{Keywords}
 
@@ -241,11 +256,30 @@ System (HDFS).Snapshot means capturing the state of the storage system at an exa
 
 \noindent HDFS
 
-\noindent FileSystem Snapshots
+\noindent Distributed FileSystem
 
-\noindent Hop
+\noindent Snapshots
+
+\noindent HOPS
 
 }
+
+\section*{Palavras Chave}
+
+{\large % EM INGLÊS
+
+\noindent Hadoop
+
+\noindent HDFS
+
+\noindent sistema de ficheiros distribuído
+
+\noindent Snapshots
+
+\noindent HOPS
+
+}
+
 
 \vfill
 %LATEX2HTML}
@@ -268,7 +302,7 @@ System (HDFS).Snapshot means capturing the state of the storage system at an exa
  %%%
   %
 
-% ``Table of contents'' (índice).
+% ``Table of contents'' (índice) .
 
 \def\contentsname{Index}
 \tableofcontents

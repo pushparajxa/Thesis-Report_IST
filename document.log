@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.8.6)  11 SEP 2014 16:14
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.8.6)  3 OCT 2014 18:23
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -815,21 +815,32 @@ pdfTeX warning: pdflatex: pop empty color page stack 0
 Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./
 figs/preliminar/Logo_IST_web.pdf>] [2
 
-] [3] [4
-
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 215--223
+Underfull \hbox (badness 10000) in paragraph at lines 162--167
 
  []
 
-[5] [6
 
-] [7] [8
+Underfull \hbox (badness 10000) in paragraph at lines 162--167
 
-] (./document.toc
+ []
+
+[3] [4
+
+] [5] [6
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 222--230
+
+ []
+
+[7] [8
+
+] [9] [10] (./document.toc
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 1.
  [1
+
 
 ] [2])
 \tf@toc=\write8
@@ -909,7 +920,7 @@ l.46  \subsection
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 46.
 
-<figs/preliminar/HDFS_Architecture.png, id=412, 960.58875pt x 599.23875pt>
+<figs/preliminar/HDFS_Architecture.png, id=422, 960.58875pt x 599.23875pt>
 File: figs/preliminar/HDFS_Architecture.png Graphic file (type png)
 
 <use figs/preliminar/HDFS_Architecture.png>
@@ -936,15 +947,25 @@ icate ignored
 <to be read again> 
                    \relax 
 l.156 
-       [8] [9]
-<figs/preliminar/HOP_table_relation.png, id=451, 733.74126pt x 421.575pt>
+       [8]pdfTeX warning (ext4): destination with the same identifier (name{pag
+e.9}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.181 
+       [9]
+<figs/preliminar/HOP_table_relation.png, id=460, 733.74126pt x 421.575pt>
 File: figs/preliminar/HOP_table_relation.png Graphic file (type png)
 
 <use figs/preliminar/HOP_table_relation.png>
-<figs/preliminar/HOP_HDFS_Schema.png, id=452, 761.84625pt x 891.33pt>
+<figs/preliminar/HOP_HDFS_Schema.png, id=461, 761.84625pt x 891.33pt>
 File: figs/preliminar/HOP_HDFS_Schema.png Graphic file (type png)
 
-<use figs/preliminar/HOP_HDFS_Schema.png> [10]
+<use figs/preliminar/HOP_HDFS_Schema.png>pdfTeX warning (ext4): destination wit
+h the same identifier (name{page.10}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.224 
+       [10]
 Overfull \hbox (62.23941pt too wide) in paragraph at lines 238--284
  [][] 
  []
@@ -970,11 +991,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 289--307
 
 [11 <./figs/preliminar/HOP_table_relation.png>] [12 <./figs/preliminar/HOP_HDFS
 _Schema.png>] [13] [14]
-<figs/preliminar/mysql_cluster.png, id=498, 585.18625pt x 373.395pt>
+<figs/preliminar/mysql_cluster.png, id=507, 585.18625pt x 373.395pt>
 File: figs/preliminar/mysql_cluster.png Graphic file (type png)
 
 <use figs/preliminar/mysql_cluster.png> [15]
-<figs/preliminar/nodegroups.png, id=504, 501.875pt x 506.89375pt>
+<figs/preliminar/nodegroups.png, id=512, 501.875pt x 506.89375pt>
 File: figs/preliminar/nodegroups.png Graphic file (type png)
 
 <use figs/preliminar/nodegroups.png> [16 <./figs/preliminar/mysql_cluster.png>]
@@ -1098,7 +1119,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 175--185
 
  []
 
-<figs/preliminar/FileSystemExample.png, id=564, 527.9725pt x 220.825pt>
+<figs/preliminar/FileSystemExample.png, id=572, 527.9725pt x 220.825pt>
 File: figs/preliminar/FileSystemExample.png Graphic file (type png)
 
 <use figs/preliminar/FileSystemExample.png> [24]
@@ -1203,7 +1224,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 447--448
 
  []
 
-<figs/preliminar/Approach2.png, id=608, 669.50125pt x 254.9525pt>
+<figs/preliminar/Approach2.png, id=615, 669.50125pt x 254.9525pt>
 File: figs/preliminar/Approach2.png Graphic file (type png)
 
 <use figs/preliminar/Approach2.png>
@@ -1215,116 +1236,116 @@ Overfull \hbox (80.35765pt too wide) in paragraph at lines 451--452
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [31] [32 <./figs/preliminar/Approach2.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 493--494
+Underfull \hbox (badness 10000) in paragraph at lines 494--495
 
  []
 
 [33]
-Underfull \hbox (badness 10000) in paragraph at lines 517--527
+Underfull \hbox (badness 10000) in paragraph at lines 518--528
 
  []
 
 
-Overfull \hbox (50.32988pt too wide) in paragraph at lines 517--527
+Overfull \hbox (50.32988pt too wide) in paragraph at lines 518--528
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 517--527
+Underfull \hbox (badness 10000) in paragraph at lines 518--528
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 527--539
+Underfull \hbox (badness 10000) in paragraph at lines 528--540
 
  []
 
 
-Overfull \hbox (50.32988pt too wide) in paragraph at lines 527--539
+Overfull \hbox (50.32988pt too wide) in paragraph at lines 528--540
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 527--539
+Underfull \hbox (badness 10000) in paragraph at lines 528--540
 
  []
 
 [34]
-Underfull \hbox (badness 10000) in paragraph at lines 545--557
+Underfull \hbox (badness 10000) in paragraph at lines 546--558
 
  []
 
 
-Overfull \hbox (50.32988pt too wide) in paragraph at lines 545--557
+Overfull \hbox (50.32988pt too wide) in paragraph at lines 546--558
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 545--557
+Underfull \hbox (badness 10000) in paragraph at lines 546--558
 
  []
 
 [35]
-Overfull \hbox (84.59036pt too wide) in paragraph at lines 691--691
+Overfull \hbox (84.59036pt too wide) in paragraph at lines 692--692
  []        \OT1/pcr/m/n/10.95 //parentStck is used to track completion of proce
 ssing of a directory.[] 
  []
 
 
-Overfull \hbox (58.3104pt too wide) in paragraph at lines 691--691
+Overfull \hbox (58.3104pt too wide) in paragraph at lines 692--692
  []             \OT1/pcr/m/n/10.95 * This Inode can be a directory or file also
  it can be new or[] 
  []
 
 
-Overfull \hbox (18.89044pt too wide) in paragraph at lines 691--691
+Overfull \hbox (18.89044pt too wide) in paragraph at lines 692--692
  []                    \OT1/pcr/m/n/10.95 if(tempNode.getStatus()==SnapShotCons
 tants.New){[] 
  []
 
 [36]
-Overfull \hbox (51.7404pt too wide) in paragraph at lines 691--691
+Overfull \hbox (51.7404pt too wide) in paragraph at lines 692--692
  []                    \OT1/pcr/m/n/10.95 children = ((INodeDirectory) tempNode
 ).getChildren();[] 
  []
 
 
-Overfull \hbox (5.75046pt too wide) in paragraph at lines 691--691
+Overfull \hbox (5.75046pt too wide) in paragraph at lines 692--692
  []                    \OT1/pcr/m/n/10.95 if (children != null && !children.isE
 mpty()) {[] 
  []
 
 
-Overfull \hbox (38.60042pt too wide) in paragraph at lines 691--691
+Overfull \hbox (38.60042pt too wide) in paragraph at lines 692--692
  []                     \OT1/pcr/m/n/10.95 //update the ancestors about changes
  in the quota.[] 
  []
 
 
-Overfull \hbox (5.75046pt too wide) in paragraph at lines 691--691
+Overfull \hbox (5.75046pt too wide) in paragraph at lines 692--692
  []                     \OT1/pcr/m/n/10.95 //Remove the blocks associated with 
 this file[] 
  []
 
 [37]
-Underfull \hbox (badness 10000) in paragraph at lines 714--716
+Underfull \hbox (badness 10000) in paragraph at lines 715--717
 
  []
 
 [38]
-Overfull \hbox (44.07532pt too wide) in paragraph at lines 809--809
+Overfull \hbox (44.07532pt too wide) in paragraph at lines 810--810
 []    \OT1/pcr/m/n/10.95 List<INode> oldRows =  select * from inodes where id<=
 end and id>=start;[] 
  []
 
 [39]
-Overfull \hbox (17.79535pt too wide) in paragraph at lines 809--809
+Overfull \hbox (17.79535pt too wide) in paragraph at lines 810--810
 []    \OT1/pcr/m/n/10.95 pool.add(new UpdateRunnableForCoulmnIsDeletd(count,cou
 nt+BlockSize);[] 
  []
 
 [40]
-Overfull \hbox (11.22536pt too wide) in paragraph at lines 809--809
+Overfull \hbox (11.22536pt too wide) in paragraph at lines 810--810
 []    \OT1/pcr/m/n/10.95 pool.add(new UpdateRunnableForColumnId(count,count+Blo
 ckSize,lock);[] 
  []
@@ -1333,7 +1354,7 @@ ckSize,lock);[]
 
 ]
 Chapter 4.
-<figs/preliminar/Benchmark1.png, id=685, 724.7075pt x 372.39125pt>
+<figs/preliminar/Benchmark1.png, id=692, 724.7075pt x 372.39125pt>
 File: figs/preliminar/Benchmark1.png Graphic file (type png)
 
 <use figs/preliminar/Benchmark1.png>
@@ -1341,22 +1362,22 @@ Overfull \hbox (124.5227pt too wide) in paragraph at lines 42--43
  [][] 
  []
 
-<figs/preliminar/benchmark_graph2.png, id=686, 642.4pt x 481.8pt>
+<figs/preliminar/benchmark_graph2.png, id=693, 642.4pt x 481.8pt>
 File: figs/preliminar/benchmark_graph2.png Graphic file (type png)
 
 <use figs/preliminar/benchmark_graph2.png>
-<figs/preliminar/Facebook_Snapshots.png, id=691, 698.61pt x 486.81876pt>
+<figs/preliminar/Facebook_Snapshots.png, id=698, 698.61pt x 486.81876pt>
 File: figs/preliminar/Facebook_Snapshots.png Graphic file (type png)
 
 <use figs/preliminar/Facebook_Snapshots.png> [43] [44 <./figs/preliminar/Benchm
 ark1.png (PNG copy)> <./figs/preliminar/benchmark_graph2.png (PNG copy)>]
-<figs/preliminar/MySqlServerSingleSnapshotEval.png, id=710, 696.6025pt x 430.60
+<figs/preliminar/MySqlServerSingleSnapshotEval.png, id=718, 696.6025pt x 430.60
 875pt>
 File: figs/preliminar/MySqlServerSingleSnapshotEval.png Graphic file (type png)
 
  <use figs/preliminar/MySqlServerSingleSnapshotEval.png> [45 <./figs/preliminar
 /Facebook_Snapshots.png (PNG copy)>]
-<figs/preliminar/MySqlServerSingleSnapshotEvalGraph.png, id=717, 642.4pt x 481.
+<figs/preliminar/MySqlServerSingleSnapshotEvalGraph.png, id=724, 642.4pt x 481.
 8pt>
 File: figs/preliminar/MySqlServerSingleSnapshotEvalGraph.png Graphic file (type
  png)
@@ -1366,11 +1387,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 83--86
  []
 
 
-<figs/preliminar/ClusterJSingleSnapshotEval.png, id=719, 697.60625pt x 433.62pt
+<figs/preliminar/ClusterJSingleSnapshotEval.png, id=726, 697.60625pt x 433.62pt
 >
 File: figs/preliminar/ClusterJSingleSnapshotEval.png Graphic file (type png)
  <use figs/preliminar/ClusterJSingleSnapshotEval.png>
-<figs/preliminar/benchmark_Clusterj.png, id=720, 642.4pt x 481.8pt>
+<figs/preliminar/benchmark_Clusterj.png, id=727, 642.4pt x 481.8pt>
 File: figs/preliminar/benchmark_Clusterj.png Graphic file (type png)
 
 <use figs/preliminar/benchmark_Clusterj.png>) (./conclusion.tex [46 <./figs/pre
@@ -1411,13 +1432,13 @@ ansactions .
 No file document.ind.
 [52] (./document.aux) ) 
 Here is how much of TeX's memory you used:
- 8705 strings out of 493848
- 124928 string characters out of 1152824
- 214478 words of memory out of 3000000
- 11502 multiletter control sequences out of 15000+50000
+ 8709 strings out of 493848
+ 124967 string characters out of 1152824
+ 214480 words of memory out of 3000000
+ 11505 multiletter control sequences out of 15000+50000
  21198 words of font info for 62 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 45i,13n,38p,1064b,497s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 45i,13n,38p,1098b,497s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{algorithm.2} has been refere
 nced but does not exist, replaced by a fixed one
 
@@ -1435,9 +1456,9 @@ nts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/pala
 tino/uplb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplr8a.pfb><
 /usr/share/texmf-texlive/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texmf-
 texlive/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on document.pdf (68 pages, 822032 bytes).
+Output written on document.pdf (70 pages, 825989 bytes).
 PDF statistics:
- 881 PDF objects out of 1000 (max. 8388607)
- 243 named destinations out of 1000 (max. 500000)
+ 888 PDF objects out of 1000 (max. 8388607)
+ 244 named destinations out of 1000 (max. 500000)
  460 words of extra memory for PDF output out of 10000 (max. 10000000)
 

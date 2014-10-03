@@ -399,16 +399,16 @@ EndTime\\
 \textbf{When to Log}\\
  When we add/ deleted/modify directories or files in a directory then we log changes under that directory. We log only when this directory is in any snapshot[which is taken on this directory or one-of its ancestors]. So before performing any operation in this directory we check whether this directory is in any snapshot or not.Consider directory path /A/B/C/, we want to add a file to directory C.We can log this in C-List if C is in a snapshot. \\
  1. First Check any snapshots taken on C.If yes then log.\\
- 2. Get the Join-Time of each inode on the path i.e A,B,C and select the maximum time. If there are any snapshots taken on A or B after maximum time then log.\\
+ 2. If there are any snapshots on B after JoinTime(C) or if any Snapshots on A after JT(B) and JT(C) then log.\\
  3. If there is any entry for C in InodeSnapshotMap then log.\\
 \\
 \textbf{Moving an Inode}\\ 
 Consider directory paths /A/B/ and /U/V/W/, move directory W to B.
 \begin{enumerate}
-\item Get the list of snapshots taken on U,V after the join time of W. In the form like
-\{U,Time of First Snapshot after Join Time, Time Last Snapshot after Join Time\}.
-\item Since some inodes under W may have join times greater than W' join time, we need to check for each inode in sub-tree on which snapshots of U,V is present.After determining which snapshots it is in then insert row in InodeSnapshotMap table.In this way we capture in which snapshots a particular inode is in when it is being moved. Here if we observe, the join times of inodes on directory path from root to child are non-decreasing.This enforces an order which is useful in finding whether an inode is in any snapshots or not.
-\item Set the Join time of each children in the subtree to the present time.
+\item Get the list of snapshots taken on U, after JoinTime(V), snapshots taken on V after JoinTime(W). In the form like
+\{U,Time of First Snapshot after Join Time, Time of Last Snapshot after Join Time\}.
+\item Since some inodes under W may have join times greater than W's join time, we need to check for each inode in sub-tree on which snapshots of U,V is present.After determining which snapshots it is in then insert row in InodeSnapshotMap table.In this way we capture in which snapshots a particular inode is in when it is being moved. 
+
 \end{enumerate}
 
 \textbf{Logging modifications of files and blocks:}\\
@@ -418,7 +418,7 @@ When we change any columns corresponding to the file in Inode table those were h
  %We follow the same approach as mentioned in the %Approach2.
 
 \textbf{Deletion of a file/or directory}\\
-When the issuer issues command to delete a file, first , we check whether it is in any snapshot, if not then we permanently delete it.When deleting a directory, if it is in snapshot,we mark all the children with isDeleted=1 and the background delete thread will do check on inodes , deleting those not present in any snapshot permanently.Consider /A/B/C/ suppose want to delete C. First get the list of snapshots on A,B after the join time of C then for each child in sub-tree rooted at C set isDeleted=1, also inserting rows in inodesMap table based on the join time of child with the list of snapshots on A,B after join time of C. When you are deleting an inode permanently delete the logs associated with it in tables c-list,d-list,etc..
+When the issuer issues command to delete a file, first , we check whether it is in any snapshot, if not then we permanently delete it.When deleting a directory, if it is in snapshot,we mark all the children with isDeleted=1 and the background delete thread will do check on inodes , deleting those not present in any snapshot permanently.Consider /A/B/C/ suppose want to delete C. First get the list of snapshots on A,B as explained above then for each child in sub-tree rooted at C set isDeleted=1, also inserting rows in inodesMap table based on the join time of child with the list of snapshots on A,B. 
 
 \textbf{Deleting entries in MovedPaths Table}\\
 When we delete a snapshot on an inode, we check for entries in InodeSnapshotMap with that can be deleted.
